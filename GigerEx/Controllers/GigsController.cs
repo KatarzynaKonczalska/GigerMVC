@@ -15,9 +15,25 @@ namespace GigerEx.Controllers
         private GigDBContext db = new GigDBContext();
 
         // GET: Gigs
-        public ActionResult Index()
+        public ActionResult Index(string City, string searchString)
         {
-            return View(db.Gigs.ToList());
+            var CityList = new List<string>();
+            var CityQry = from d in db.Gigs
+                           orderby d.City
+                           select d.City;
+            CityList.AddRange(CityQry.Distinct());
+            ViewBag.city = new SelectList(CityList);
+
+
+            //return View(db.Gigs.ToList());
+            var gigs = from m in db.Gigs
+                       select m;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                gigs = gigs.Where(s => s.Band.Contains(searchString));
+            }
+
+            return View(gigs);
         }
 
         // GET: Gigs/Details/5

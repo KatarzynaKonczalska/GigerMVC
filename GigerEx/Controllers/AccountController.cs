@@ -151,7 +151,7 @@ namespace GigerEx.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, AccountType = model.AccountType};
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, AccountType = model.AccountType};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

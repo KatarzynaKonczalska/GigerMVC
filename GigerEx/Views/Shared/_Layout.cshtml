@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Giger</title>
+    <title>@ViewBag.Title - Your gig app!</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -24,7 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Gigs", "Gigs", "Gigs")</li>
+                    <li>@Html.ActionLink("Gigs", "Index", "Gigs")</li>
                     <li>@Html.ActionLink("Band", "Index", "BandsInfo")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -35,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; Giger @DateTime.Now.Year</p>
         </footer>
     </div>
 

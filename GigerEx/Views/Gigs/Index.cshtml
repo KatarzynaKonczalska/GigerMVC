@@ -9,12 +9,12 @@
     @Html.ActionLink("Dodaj nowy", "Create")
     @using (Html.BeginForm("Index", "Gigs", FormMethod.Get))
     {
+        @Html.AntiForgeryToken()
     <p>
-        <label>City:</label>
-        <div class="editor_field"> @Html.DropDownList("City") </div>
+        <label>City: @Html.DropDownList("City") </label>
         <label for="id">Band:</label>
-        <div class="editor_field"> @Html.TextBox("searchString") </div>
-        <input type="submit" value="Szukaj" />
+        @Html.TextBox("searchString")
+        <input type="submit" value="Szukaj" class="form-actions"/>
     </p>
 
     }

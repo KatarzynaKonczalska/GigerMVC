@@ -9,7 +9,9 @@
     @Styles.Render("~/Content/bootstrapcss")
 
 </head>
-<body>
+
+<body style="background-image:url(/Content/images/backgr.jpg);background-repeat:no-repeat;
+    background-attachment:fixed">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,9 +24,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Gigs", "Index", "Gigs")</li>
                     <li>@Html.ActionLink("Band", "Index", "BandsInfo")</li>
                 </ul>
@@ -32,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color:rgba(245, 245, 245, 0.4)">
         @RenderBody()
         <hr />
         <footer>

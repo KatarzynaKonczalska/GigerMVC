@@ -16,10 +16,6 @@ namespace GigerEx.Controllers
         {
             return View();
         }
-
-        // 
-        // GET: /HelloWorld/Welcome/ 
-
         public string Welcome()
         {
             return "This is the Welcome action method...";
@@ -35,5 +31,6 @@ namespace GigerEx.Controllers
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
+        
     }
 }

@@ -3,73 +3,73 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Koncerty</h2>
+<h2>Concerts</h2>
 
-<p>
-    @Html.ActionLink("Dodaj nowy", "Create")
-    @using (Html.BeginForm("Index", "Gigs", FormMethod.Get))
-    {
     <p>
-        <label>City:</label>
-        <div class="editor_field"> @Html.DropDownList("City") </div>
-        <label for="id">Band:</label>
-        <div class="editor_field"> @Html.TextBox("searchString") </div>
-        <input type="submit" value="Szukaj" />
-    </p>
+        @Html.ActionLink("Add new", "Create")
+        @using (Html.BeginForm("Index", "Gigs", FormMethod.Get))
+        {
+        <p>
+            <label>City:</label>
+            <nav class="editor_field"> @Html.DropDownList("City", null, new { @class = "form-control" }) </nav>
+            <label for="id">Band:</label>
+            <nav class="editor_field"> @Html.TextBox("searchString", null, new { @class = "form-control" }) </nav>
+            <input class="btn btn-primary btn-xs" type="submit" value="Search" />
+        </p>
 
-    }
-    </p>
-    <br />
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Band)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Place)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Info)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-            {
-            <tr onclick="location.href = '@(Url.Action("Details", new { id=item.ID }))'">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Band)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Place)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Info)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
         }
+   </p>
+        <br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Band)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Place)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr onclick="location.href = '@(Url.Action("Details", new { id=item.ID }))'">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Band)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Info)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>

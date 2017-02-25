@@ -83,6 +83,10 @@ namespace GigerEx.Models
         [Required]
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
+
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
     }
 
     public class ResetPasswordViewModel

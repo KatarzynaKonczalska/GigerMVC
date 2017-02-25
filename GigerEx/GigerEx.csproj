@@ -273,7 +273,7 @@
     <Content Include="Views\Gigs\Delete.cshtml" />
     <Content Include="Views\Gigs\Details.cshtml" />
     <Content Include="Views\Gigs\Edit.cshtml" />
-    <Content Include="Views\BandsInfo\index.cshtml" />
+    <Content Include="Views\BandsInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

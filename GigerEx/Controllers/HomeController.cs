@@ -13,7 +13,7 @@ namespace GigerEx.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult About()     //html response
         {
             ViewBag.Message = "Your application description page.";
 

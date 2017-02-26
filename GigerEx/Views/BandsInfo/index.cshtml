@@ -6,20 +6,25 @@
     ViewBag.Title = "Band";
 }
 
-<h2>!! !! nazwa danego zespołu</h2>
+<h2>@User.Identity.Name</h2>
+@*@{
+    var a = Request.QueryString["AccountType"];
+    if (a == "Fan")
+    {*@
+        <nav>
+            <p>
+                Image: @Html.TextBox("img")
+                <input type="submit" value="Accept" name="img" class="" />
+            </p>
+            <p>
+                <input type="checkbox" name="nazwa" value="wartość" />gatunki
+            </p>
+        </nav>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-    <nav>
-        <p>
-            Image: @Html.TextBox("img")
-            <input type="submit" value="Accept" name="img" class="" />
-        </p>
-        <p>
-            <input type="checkbox" name="nazwa" value="wartość" />gatunki
-        </p>
-    </nav>
-
-
+    @*}
+    else
+    {
+        <p>zespol</p>
+    }
+}*@
 

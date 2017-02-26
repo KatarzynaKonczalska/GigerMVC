@@ -14,11 +14,18 @@ namespace GigerEx.Controllers
     {
         // 
         // GET: /HelloWorld/ 
-        private RegisterViewModel db = new RegisterViewModel();
+        //private RegisterViewModel db = new RegisterViewModel();
+        private GigDBContext db = new GigDBContext();
 
         public ActionResult Index()
         {
-            return View();
+            var gigs = from m in db.Gigs
+                       select m;
+
+                gigs = gigs.Where(s => s.Band.Contains("Koniki Polne"));
+           
+
+            return View(gigs);
         }
         public string Welcome()
         {

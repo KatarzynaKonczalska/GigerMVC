@@ -5,23 +5,25 @@
 }
 <h2>Concerts</h2>
 
-    <p>
-        @Html.ActionLink("Add new", "Create")
-        @using (Html.BeginForm("Index", "Gigs", FormMethod.Get))
-        {
-        <p>
-            <label>City:</label>
-            <nav class="editor_field"> @Html.DropDownList("City", null, new { @class = "form-control" }) </nav>
-            <label for="id">Band:</label>
-            <nav class="editor_field"> @Html.TextBox("searchString", null, new { @class = "form-control" }) </nav>
-            <br/>
-            <input class="btn btn-primary btn-xs, text-primary" type="submit" value="Search" />  
-        </p>
+<p>
+    @*<nav class="btn btn-secondary btn-sm">@Html.ActionLink("Add new", "Create")</nav>*@
 
-        }
-   </p>
-        <table class="table table-striped">
-           @* <tr>
+    @using (Html.BeginForm("Index", "Gigs", FormMethod.Get))
+    {
+    <p>
+        <label>City:</label>
+        <nav class="editor_field"> @Html.DropDownList("City", null, new { @class = "form-control" }) </nav>
+        <label for="id">Band:</label>
+        <nav class="editor_field"> @Html.TextBox("searchString", null, new { @class = "form-control" }) </nav>
+        <br />
+        <input class="btn btn-secondary btn-sm, text-danger" type="submit" value="Search" />
+        @*<input class="btn btn-secondary btn-sm, text-danger" type="button" value="Create" onclick="location.href='@Url.Action("Add new", "Create")'" />*@
+        <nav class="btn btn-secondary btn-sm, text-danger">@Html.ActionLink("Add new", "Create","",new { @class = "btn btn-danger" })</nav>
+    </p>
+    }
+    </p>
+    <table class="table table-striped">
+        @* <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Band)
                 </th>
@@ -43,41 +45,44 @@
                 <th></th>
             </tr> *@
 
-                @foreach (var item in Model)
-                {
-                    
-                        <tr>
-                           <td class="col-md-6 col-lg-6 col-sm-6 col-xs-6" onclick="location.href = '@(Url.Action("Create", new { id=item.ID }))'">
-                                    @Html.DisplayFor(modelItem => item.Band)<br /><br/>
-                                    @Html.DisplayFor(modelItem => item.City)<br/>
-                                    @Html.DisplayFor(modelItem => item.Place)
 
-                                </td>
-                               @* <td>
-                                    @Html.DisplayFor(modelItem => item.Country)
-                                </td>
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.Info)
-                                </td>*@
+        @foreach (var item in Model)
+        {
 
-                                <td class="col-md-1 col-lg-1 col-sm-2 col-xs-5" onclick="location.href = '@(Url.Action("Details", new { id=item.ID }))'">
-                                    @Html.DisplayFor(modelItem => item.Date)
-                                    <br/><br/>Details<br/>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                    @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                                </td>
-                        </tr>
-                        <tr style="height:15px;"/>
+            <tr>
+                <td class="col-md-6 col-lg-6 col-sm-6 col-xs-6" onclick="location.href = '@(Url.Action("Create", new { id=item.ID }))'">
+                    <div style="font-family:'Microsoft NeoGothic'; font-size:large">@Html.DisplayFor(modelItem => item.Band)</div><br /><br />
+                    <div style="font-size:small">
+                        @Html.DisplayFor(modelItem => item.City)<br />
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </div>
 
-                }
+                </td>
+                @* <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
 
-        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Info)
+                        </td>*@
+
+                <td class="col-md-1 col-lg-1 col-sm-2 col-xs-5" onclick="location.href = '@(Url.Action("Details", new { id=item.ID }))'">
+                    @Html.DisplayFor(modelItem => item.Date)
+                    <br /><br /><br />Details<br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+            <tr style="height:15px;" />
+
+        }
+
+    </table>

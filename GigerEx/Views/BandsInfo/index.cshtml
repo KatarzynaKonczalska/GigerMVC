@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<GigerEx.Models.Gig>
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +14,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        if ($("#mybutton").unload) {
+        if ($("#mybutton").hidden) {
             $("img#bey").click(function () {
                 $("#mybutton").slideDown('slow');
             });
@@ -28,7 +30,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        if ($("#genreb").unload) {
+        if ($("#genreb").hidden) {
             $("#genrel").click(function () {
                 $("#genreb").slideDown('slow');
             });
@@ -43,7 +45,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        if ($("#genrediv").unload) {
+        if ($("#genrediv").hidden) {
             $("#genreb").click(function () {
                 $("#genrediv").slideDown('slow');
                 $("#genreb").text("Save");
@@ -57,12 +59,12 @@
     });
 </script>
 
-<h2 style="font-family:'Microsoft NeoGothic'">Beyonce</h2>
+<h2 style="font-family:'Microsoft NeoGothic'">Koniki Polne</h2>
 
 <body>
 
     <p>
-        <img id="bey" src="http://hochu.ua/pictures_ckfinder/images/Beyonce-4.jpg" alt="beyonce" class="img-responsive" style="max-height:300px; border:ridge">
+        <img id="bey" src="http://majoringinmusic.com/wp-content/uploads/2015/05/Playing-music-on-cruise-ships-drums.jpeg" alt="beyonce" class="img-responsive" style="max-height:300px; border:ridge">
         <button id="mybutton" style="align-self:center;display:none" class="btn btn-secondary btn-sm">Edit Photo</button>
         <input class="form-control" type="text" id="photoinput" style="display:none">
 
@@ -72,7 +74,6 @@
     <label id="genrel" style="font-family:'Microsoft NeoGothic'">Metal, Rock, Falk</label>
     <label><img id="fire" src="~/Content/images/ff.png" style="width:20px" />8123</label>
     <br /><button id="genreb" style="align-self:center;display:none;" class="btn btn-secondary btn-sm">Edit Genre</button><br />
-
 
     <div id="genrediv" class="form-check" style="font-family:'Microsoft MHei'; font-size:small; display:none">
         <label class="form-check-label">
@@ -112,6 +113,40 @@
             Opera
         </label>
     </div>
+
+    <label style="font-family:'Microsoft NeoGothic'">
+        Hi! We're Tomek and Adam. We were the black horse of last APDK festival. See ya at the stage!
+    </label>
+
+    <br />
+    <br />
+    <br />
+    <label style="font-family:'Microsoft NeoGothic';font-size:medium">Nearest shows</label>
+    <table class="table table-striped">
+        @foreach (var item in Model.OrderBy(x => x.Date).Take(3))
+        {
+            <tr>
+                <td class="col-md-6 col-lg-6 col-sm-6 col-xs-6" onclick="location.href = '@(Url.Action("Create", new { id=item.ID }))'">
+                    <div style="font-family:'Microsoft NeoGothic'; font-size:large">@Html.DisplayFor(modelItem => item.Band)</div><br /><br />
+                    <div style="font-size:small">
+                        @Html.DisplayFor(modelItem => item.City)<br />
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </div>
+
+                </td>
+                <td class="col-md-1 col-lg-1 col-sm-2 col-xs-5" onclick="location.href = '@(Url.Action("Details", new { id=item.ID }))'">
+                    @Html.DisplayFor(modelItem => item.Date)
+                    <br /><br /><br />Details<br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+            <tr style="height:15px;" />
+
+        }
+
+    </table>
+
 </body>
 
 
